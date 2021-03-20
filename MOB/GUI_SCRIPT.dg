@@ -1,0 +1,118 @@
+
+
+var My_SCRIPT =`
+
+..[page],1
+..{
+	..js_pc, Theme_Change("1","b");
+	
+	..create_page,3
+	..create_page,2
+	..info,2,
+	<a><img id="Logo" src="logo.png"> </a>
+	<p></p>
+	<center>Welcome to Photon Mining!</center>
+	..
+
+	..label,<br/>Please enter the username:
+	
+	..input_text(it1)
+	
+	
+	..label,<br/>
+	
+	..label,Please enter password:
+	..input_password(ip1)
+	..label,<br/>
+	
+	..js,
+		function login(){
+		var user = "admin";
+		var pass = "admin";
+		if(get_input_text('it1')==user && get_input_text('ip1')==pass){
+			 console.log(" HI There ")
+			 Page_change('2');
+		}
+		else{
+		}
+		}
+	..button, Login, login();
+		
+..}
+
+
+..[page],2 
+..{	
+	..button, Theme, Theme_Change("2","c");
+	..js_pc, Theme_Change("2","b");
+	..info, 2,
+	<center>Please connect to the server</center>
+	
+	..js,
+		function Connect_To_Server(){
+			MQTT_HOST          = Read_Memory('mem_Host');
+			MQTT_PORT          = Read_Memory('mem_Port');
+			MQTT_DEV_ID       = Read_Memory('mem_Device_ID');
+			MQTT_DEV_Name = Read_Memory('mem_Device_Name');
+			if(Connect_Status === 0)  SYS_LOOP_START();
+			if(Connect_Status === 1)  Page_change('3');
+		}
+	
+	..js,
+		function Refresh_isConfig(){
+			put_input_text('it_pop1_Host',Read_Memory('mem_Host'));
+			put_input_text('it_pop1_Port',Read_Memory('mem_Port'));
+			put_input_text('it_pop1_Device_ID',Read_Memory('mem_Device_ID'));
+		    put_input_text('it_pop1_Device_Name',Read_Memory('mem_Device_Name'));
+		}
+			
+	..js_pc, Refresh_isConfig();
+
+	..label,Host:
+		..input_text(it_pop1_Host),
+		..label,Port:
+		..input_text(it_pop1_Port),
+		..label,Device ID:
+		..input_text(it_pop1_Device_ID),
+		..label,Device Name:
+		..input_text(it_pop1_Device_Name),
+		..##,2 
+		..button,Save,
+			Write_Memory('mem_Host', 		get_input_text('it_pop1_Host'));
+			Write_Memory('mem_Port', 		get_input_text('it_pop1_Port'));
+			Write_Memory('mem_Device_ID', 	get_input_text('it_pop1_Device_ID'));
+			Write_Memory('mem_Device_Name',  get_input_text('it_pop1_Device_Name'));
+		..button,Refresh, Refresh_isConfig();
+
+	..button,Connect to Server, Connect_To_Server();
+	
+..}
+
+..[page],3
+..{
+	..js_pc, Theme_Change("3","b");
+	..header_button,name, ui-btn ui-btn-icon-notext ui-corner-all ui-icon-carat-l,
+		Page_change('1');
+	..info,2,<center>Admin Panel</center>
+	..label,<center>
+	<iframe src="http://157.230.233.39:3000/d-solo/rr2Z0E8Gz/new-dashboard-copy?orgId=2&from=1615548653683&to=1615570253683&panelId=2" width="350" height="200" frameborder="0"></iframe></center>
+	..label,
+	..label,
+
+
+..}
+
+
+`;
+
+
+var START_SCRIPT = My_SCRIPT;
+
+
+
+
+
+
+
+
+
