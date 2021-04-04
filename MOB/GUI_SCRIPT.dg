@@ -1,18 +1,20 @@
 
 
-var My_SCRIPT =`
 
+var My_SCRIPT =`
 ..[page],1
 ..{
+	..js_pc, booleaner = true;
 	..js_pc, Theme_Change("1","b");
-	
+	..header_button,Theme, 
+		ui-btn ui-btn-icon-notext ui-corner-all ui-icon-eye, 
+		themer();
 	..create_page,3
 	..create_page,2
 	..info,2,
 	<a><img id="Logo" src="logo.png"> </a>
 	<p></p>
 	<center>Welcome to Photon Mining!</center>
-	..
 
 	..label,<br/>Please enter the username:
 	
@@ -24,7 +26,17 @@ var My_SCRIPT =`
 	..label,Please enter password:
 	..input_password(ip1)
 	..label,<br/>
-	
+	..js,
+		function themer(){
+		if(booleaner==true){
+		
+		Theme_Change("1","c");		
+		}
+		else{
+		Theme_Change("1","b");	
+		}
+		booleaner=!booleaner;
+		}
 	..js,
 		function login(){
 		var user = "admin";
@@ -43,8 +55,13 @@ var My_SCRIPT =`
 
 ..[page],2 
 ..{	
-	..button, Theme, Theme_Change("2","c");
-	..js_pc, Theme_Change("2","b");
+	
+	..js_pc,if(booleaner==true){
+			Theme_Change("2","c");
+			}
+		if(booleaner==false){
+		Theme_Change("2","b");
+		};
 	..info, 2,
 	<center>Please connect to the server</center>
 	
@@ -95,7 +112,7 @@ var My_SCRIPT =`
 		Page_change('1');
 	..info,2,<center>Admin Panel</center>
 	..label,<center>
-	<iframe src="http://157.230.233.39:3000/d-solo/rr2Z0E8Gz/new-dashboard-copy?orgId=2&from=1615548653683&to=1615570253683&panelId=2" width="350" height="200" frameborder="0"></iframe></center>
+	<iframe src="http://157.230.233.39:3000/d-solo/Joc0p4_Mz/new-dashboard-copy?orgId=2&from=1617156543785&to=1617178143785&panelId=2" width="300" height="200" frameborder="0"></iframe></center>
 	..label,
 	..label,
 
