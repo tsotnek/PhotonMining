@@ -112,10 +112,10 @@ var My_SCRIPT =`
 		Page_change('1');
 	..info,2,<center>Admin Panel</center>
 	..label,<center>
-	<iframe src="http://157.230.233.39:3000/d-solo/Joc0p4_Mz/new-dashboard-copy?orgId=2&from=1617538654910&to=1617539254910&panelId=4" width="300" height="200" frameborder="0"></iframe></center>
+	<iframe src="http://157.230.233.39:3000/d-solo/PToP41_Gk/new-dashboarddd?orgId=2&from=1617518713413&to=1617540313413&panelId=4" width="450" height="200" frameborder="0"></iframe></center>
 	..label,
 	..label,<center>
-	<iframe src="http://157.230.233.39:3000/d-solo/Joc0p4_Mz/new-dashboard-copy?orgId=2&from=1617538654910&to=1617539254910&panelId=2" width="300" height="200" frameborder="0"></iframe></center>
+	<iframe src="http://157.230.233.39:3000/d-solo/PToP41_Gk/new-dashboarddd?orgId=2&from=1617518731350&to=1617540331350&panelId=2" width="450" height="200" frameborder="0"></iframe></center>
 
 ..}
 
