@@ -4,7 +4,7 @@
 var My_SCRIPT =`
 ..[page],1
 ..{
-	..js_pc, booleaner = true;
+	..js_pc, booleaner = 1;
 	..js_pc, Theme_Change("1","b");
 	..header_button,Theme, 
 		ui-btn ui-btn-icon-notext ui-corner-all ui-icon-eye, 
@@ -28,7 +28,7 @@ var My_SCRIPT =`
 	..label,<br/>
 	..js,
 		function themer(){
-		if(booleaner==true){
+		if(booleaner==1){
 		
 		Theme_Change("1","c");		
 		}
@@ -56,12 +56,14 @@ var My_SCRIPT =`
 ..[page],2 
 ..{	
 	
-	..js_pc,if(booleaner==true){
-			Theme_Change("2","c");
-			}
-		if(booleaner==false){
-		Theme_Change("2","b");
-		};
+	..js_pc, if(booleaner==1){
+	Theme_Change("2","b");
+	}
+	else{
+		Theme_Change("2","c");
+
+	}
+	
 	..info, 2,
 	<center>Please connect to the server</center>
 	
@@ -107,15 +109,21 @@ var My_SCRIPT =`
 
 ..[page],3
 ..{
-	..js_pc, Theme_Change("3","b");
+	..js_pc, if(booleaner==1){
+	Theme_Change("3","b");
+	}
+	else{
+		Theme_Change("3","c");
+
+	}
 	..header_button,name, ui-btn ui-btn-icon-notext ui-corner-all ui-icon-carat-l,
 		Page_change('1');
 	..info,2,<center>Admin Panel</center>
 	..label,<center>
-	<iframe src="http://157.230.233.39:3000/d-solo/PToP41_Gk/new-dashboarddd?orgId=2&panelId=4" width="300" height="200" frameborder="0"></iframe></center>
+	<iframe src="http://157.230.233.39:3000/d-solo/PToP41_Gk/new-dashboarddd?orgId=2&panelId=4&refresh=0.08m" width="300" height="200" frameborder="0"></iframe></center>
 	..label,
 	..label,<center>
-	<iframe src="http://157.230.233.39:3000/d-solo/PToP41_Gk/new-dashboarddd?orgId=2&panelId=2" width="300" height="200" frameborder="0"></iframe></center>
+	<iframe src="http://157.230.233.39:3000/d-solo/PToP41_Gk/new-dashboarddd?orgId=2&panelId=2refresh=0.08m" width="300" height="200" frameborder="0"></iframe></center>
 
 ..}
 
