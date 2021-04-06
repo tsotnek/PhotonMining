@@ -2,6 +2,8 @@
 
 
 var My_SCRIPT =`
+
+
 ..[page],1
 ..{
 	..js_pc, booleaner = 1;
@@ -10,7 +12,7 @@ var My_SCRIPT =`
 		ui-btn ui-btn-icon-notext ui-corner-all ui-icon-eye, 
 		themer();
 	..create_page,3
-	..create_page,2
+	..create_page,4
 	..info,2,
 	<a><img id="Logo" src="logo.png"> </a>
 	<p></p>
@@ -42,69 +44,40 @@ var My_SCRIPT =`
 		var user = "admin";
 		var pass = "admin";
 		if(get_input_text('it1')==user && get_input_text('ip1')==pass){
-			 console.log(" HI There ")
-			 Page_change('2');
+			 console.log(" Welcome ")
+			 Popup_Open('ID');
+			 put_input_text('it_pop1_Device_ID',Read_Memory('mem_Device_ID'));
 		}
 		else{
 		}
 		}
-	..button, Login, login();
 		
-..}
-
-
-..[page],2 
-..{	
-	
-	..js_pc, if(booleaner==1){
-	Theme_Change("2","b");
-	}
-	else{
-		Theme_Change("2","c");
-
-	}
-	
-	..info, 2,
-	<center>Please connect to the server</center>
-	
 	..js,
 		function Connect_To_Server(){
-			MQTT_HOST          = Read_Memory('mem_Host');
-			MQTT_PORT          = Read_Memory('mem_Port');
+			MQTT_HOST          = "157.230.233.39";
+			MQTT_PORT          = "4004";
 			MQTT_DEV_ID       = Read_Memory('mem_Device_ID');
-			MQTT_DEV_Name = Read_Memory('mem_Device_Name');
+			MQTT_DEV_Name = "MQQT server client";
 			if(Connect_Status === 0)  SYS_LOOP_START();
 			if(Connect_Status === 1)  Page_change('3');
 		}
-	
 	..js,
 		function Refresh_isConfig(){
-			put_input_text('it_pop1_Host',Read_Memory('mem_Host'));
-			put_input_text('it_pop1_Port',Read_Memory('mem_Port'));
 			put_input_text('it_pop1_Device_ID',Read_Memory('mem_Device_ID'));
-		    put_input_text('it_pop1_Device_Name',Read_Memory('mem_Device_Name'));
 		}
-			
-	..js_pc, Refresh_isConfig();
-
-	..label,Host:
-		..input_text(it_pop1_Host),
-		..label,Port:
-		..input_text(it_pop1_Port),
-		..label,Device ID:
+	..button, Login, login();
+	
+	..[popup](ID) ,10px 20px
+    ..{ 
+		..label,<center>Enter the Device ID:</center>
 		..input_text(it_pop1_Device_ID),
-		..label,Device Name:
-		..input_text(it_pop1_Device_Name),
 		..##,2 
 		..button,Save,
-			Write_Memory('mem_Host', 		get_input_text('it_pop1_Host'));
-			Write_Memory('mem_Port', 		get_input_text('it_pop1_Port'));
 			Write_Memory('mem_Device_ID', 	get_input_text('it_pop1_Device_ID'));
-			Write_Memory('mem_Device_Name',  get_input_text('it_pop1_Device_Name'));
-		..button,Refresh, Refresh_isConfig();
-
-	..button,Connect to Server, Connect_To_Server();
-	
+		..button,Load, Refresh_isConfig();
+		..button,Connect to Server, Connect_To_Server();
+		
+	..}
 ..}
 
 ..[page],3
@@ -116,16 +89,230 @@ var My_SCRIPT =`
 		Theme_Change("3","c");
 
 	}
-	..header_button,name, ui-btn ui-btn-icon-notext ui-corner-all ui-icon-carat-l,
-		Page_change('1');
-	..info,2,<center>Admin Panel</center>
-	..label,<center>
-	<iframe src="http://157.230.233.39:3000/d-solo/PToP41_Gk/new-dashboarddd?orgId=2&panelId=4&refresh=0.08m" width="300" height="200" frameborder="0"></iframe></center>
-	..label,
-	..label,<center>
-	<iframe src="http://157.230.233.39:3000/d-solo/PToP41_Gk/new-dashboarddd?orgId=2&panelId=2refresh=0.08m" width="300" height="200" frameborder="0"></iframe></center>
+	..header_button,barchange, ui-btn ui-btn-icon-notext ui-corner-all ui-icon-bars,
+		openNav();
+	
+	
+	..html,
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 12px;}
+  .sidebar a {font-size: 14px;}
+}
+</style>
+</head>
+<body>
+
+<div id="mySidebar" class="sidebar">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+  <a href="#" onclick="Photoresistor()">Photo Resistor Data</a>
+  <a href="#" onclick="LumenData()">Lumen Data</a>
+</div>
+
+<div id="main">
+  <center><h2>Admin Panel</h2></center>
+  <center><iframe src="http://157.230.233.39:3000/d-solo/PToP41_Gk/new-dashboarddd?orgId=2&panelId=6" width="300" height="200" frameborder="0"></iframe></center>
+  <center>
+	<iframe src="http://157.230.233.39:3000/d-solo/PToP41_Gk/new-dashboarddd?orgId=2&panelId=2" width="300" height="200" frameborder="0"></iframe></center>
+</div>
+
+<script>
+function openNav() {
+  document.getElementById("mySidebar").style.width = "250px";
+  document.getElementById("main").style.marginLeft = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidebar").style.width = "0";
+  document.getElementById("main").style.marginLeft= "0";
+}
+</script>
+   
+</body>
+
+..js, function Photoresistor(){
+	Page_change('3');
+}
+
+..js, function LumenData(){
+	Page_change('4');
+}
 
 ..}
+
+
+..[page],4
+..{
+	..js_pc, if(booleaner==1){
+	Theme_Change("4","b");
+	}
+	else{
+		Theme_Change("4","c");
+
+	}
+	..header_button,barchange, ui-btn ui-btn-icon-notext ui-corner-all ui-icon-bars,
+		openNav();
+	
+
+..html,
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}
+</style>
+</head>
+<body>
+
+<div id="mySidebar" class="sidebar">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+  <a href="#">About</a>
+  <a href="#">Services</a>
+  <a href="#">Clients</a>
+  <a href="#">Contact</a>
+</div>
+
+<div id="main">
+  <button class="openbtn" onclick="openNav()">☰ Open Sidebar</button>  
+  <h2>Collapsed Sidebar</h2>
+  <p>Click on the hamburger menu/bar icon to open the sidebar, and push this content to the right.</p>
+</div>
+
+<script>
+function openNav() {
+  document.getElementById("mySidebar").style.width = "250px";
+  document.getElementById("main").style.marginLeft = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidebar").style.width = "0";
+  document.getElementById("main").style.marginLeft= "0";
+}
+</script>
+   
+</body>
+
+
+
+..}
+
 
 
 `;
