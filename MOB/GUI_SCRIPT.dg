@@ -54,6 +54,7 @@ var My_SCRIPT =`
 		
 	..js,
 		function Connect_To_Server(){
+			Write_Memory('mem_Device_ID', 	get_input_text('it_pop1_Device_ID'));
 			MQTT_HOST          = "157.230.233.39";
 			MQTT_PORT          = "4004";
 			MQTT_DEV_ID       = Read_Memory('mem_Device_ID');
@@ -71,10 +72,7 @@ var My_SCRIPT =`
     ..{ 
 		..label,<center>Enter the Device ID:</center>
 		..input_text(it_pop1_Device_ID),
-		..##,2 
-		..button,Save,
-			Write_Memory('mem_Device_ID', 	get_input_text('it_pop1_Device_ID'));
-		..button,Load, Refresh_isConfig();
+		..html, <br>
 		..button,Connect to Server, Connect_To_Server();
 		
 	..}
