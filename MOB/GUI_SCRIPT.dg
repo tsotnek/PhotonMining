@@ -161,17 +161,17 @@ body {
 
 <div id="mySidebar" class="sidebar">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-  <a href="#" onclick="Photoresistor()">Photo Resistor Data</a>
-  <a href="#" onclick="LumenData()">Lumen Data</a>
+  <a href="#" onclick="Photoresistor()">Lumen Data</a>
+  <a href="#" onclick="LumenData()">Current Data</a>
   <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
   <a href="#" onclick="Logout()">Log Out</a>
 </div>
 
 <div id="main">
   <center><h2>Admin Panel</h2></center>
-  <center><iframe src="http://157.230.233.39:3000/d-solo/PToP41_Gk/new-dashboarddd?orgId=2&panelId=6" width="350" height="250" frameborder="0"></iframe></center>
+  <center><iframe src="http://157.230.233.39:3000/d-solo/PToP41_Gk/new-dashboarddd?orgId=2&refresh=10s&panelId=8" width="300" height="200" frameborder="0"></iframe></center>
   <br><center>
-	<iframe src="http://157.230.233.39:3000/d-solo/PToP41_Gk/new-dashboarddd?orgId=2&panelId=2" width="350" height="250" frameborder="0"></iframe></center>
+	<iframe src="http://157.230.233.39:3000/d-solo/PToP41_Gk/new-dashboarddd?orgId=2&refresh=10s&panelId=4" width="300" height="200" frameborder="0"></iframe></center>
 </div>
 
 <script>
@@ -290,18 +290,18 @@ body {
 
 <div id="mySidebar2" class="sidebar">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav2()">×</a>
-  <a href="#" onclick="Photoresistor1()">Photo Resistor Data</a>
-  <a href="#" onclick="LumenData1()">Lumen Data</a>
+  <a href="#" onclick="Photoresistor1()">Lumen Data</a>
+  <a href="#" onclick="LumenData1()">Current Data</a>
   <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
   <a href="#" onclick="Logout1()">Log Out</a>
 </div>
 
 <div id="main2"> 
 <center><h2>Admin Panel</h2></center>
-  <center><iframe src="http://157.230.233.39:3000/d-solo/PToP41_Gk/new-dashboarddd?orgId=2&panelId=8" width="350" height="250" frameborder="0"></iframe></center>
+  <center><iframe src="http://157.230.233.39:3000/d-solo/PToP41_Gk/new-dashboarddd?orgId=2&refresh=10s&panelId=6" width="300" height="200" frameborder="0"></iframe></center>
   <br>
   <center>
-	<iframe src="http://157.230.233.39:3000/d-solo/PToP41_Gk/new-dashboarddd?orgId=2&panelId=4" width="350" height="250" frameborder="0"></iframe></center>
+	<iframe src="http://157.230.233.39:3000/d-solo/PToP41_Gk/new-dashboarddd?orgId=2&refresh=10s&panelId=2" width="300" height="200" frameborder="0"></iframe></center>
 </div>
 
 <script>
