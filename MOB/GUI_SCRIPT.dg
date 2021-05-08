@@ -13,6 +13,8 @@ var My_SCRIPT =`
 		themer();
 	..create_page,3
 	..create_page,4
+	..create_page,5
+	..create_page,6
 	..info,2,
 	<a><img id="Logo" src="logo.png"> </a>
 	<p></p>
@@ -77,6 +79,8 @@ var My_SCRIPT =`
 		
 	..}
 ..}
+
+
 
 ..[page],3
 ..{
@@ -163,15 +167,17 @@ body {
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
   <a href="#" onclick="Photoresistor()">Lumen Data</a>
   <a href="#" onclick="LumenData()">Current Data</a>
+  <a href="#" onclick="PowerData()">Power Data</a>
+  <a href="#" onclick="VoltageData()">Voltage Data</a>
   <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
   <a href="#" onclick="Logout()">Log Out</a>
 </div>
 
 <div id="main">
   <center><h2>Admin Panel</h2></center>
-  <center><iframe src="http://157.230.233.39:3000/d-solo/PToP41_Gk/new-dashboarddd?orgId=2&refresh=10s&panelId=8" width="300" height="200" frameborder="0"></iframe></center>
+  <center><iframe src="http://157.230.233.39:3000/d-solo/PToP41_Gk/all-solar-panel-data?orgId=2&refresh=10s&panelId=8" width="300" height="200" frameborder="0"></iframe></center>
   <br><center>
-	<iframe src="http://157.230.233.39:3000/d-solo/PToP41_Gk/new-dashboarddd?orgId=2&refresh=10s&panelId=4" width="300" height="200" frameborder="0"></iframe></center>
+	<iframe src="http://157.230.233.39:3000/d-solo/PToP41_Gk/all-solar-panel-data?orgId=2&refresh=10s&panelId=4" width="300" height="200" frameborder="0"></iframe></center>
 </div>
 
 <script>
@@ -194,8 +200,18 @@ function closeNav() {
 }
 
 ..js, function LumenData(){
-	closeNav2();
+	closeNav();
 	Page_change('4');
+}
+
+..js, function PowerData(){
+	closeNav();
+	Page_change('5');
+}
+
+..js, function VoltageData(){
+	closeNav();
+	Page_change('6');
 }
 
 ..js, function Logout(){
@@ -215,7 +231,7 @@ function closeNav() {
 
 	}
 
-	..header_button,barchange2, ui-btn ui-btn-icon-notext ui-corner-all ui-icon-bars,
+	..header_button,barchange, ui-btn ui-btn-icon-notext ui-corner-all ui-icon-bars,
 		openNav2();
 	
 
@@ -292,16 +308,18 @@ body {
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav2()">×</a>
   <a href="#" onclick="Photoresistor1()">Lumen Data</a>
   <a href="#" onclick="LumenData1()">Current Data</a>
+  <a href="#" onclick="PowerData1()">Power Data</a>
+  <a href="#" onclick="VoltageData1()">Voltage Data</a>
   <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
   <a href="#" onclick="Logout1()">Log Out</a>
 </div>
 
 <div id="main2"> 
 <center><h2>Admin Panel</h2></center>
-  <center><iframe src="http://157.230.233.39:3000/d-solo/PToP41_Gk/new-dashboarddd?orgId=2&refresh=10s&panelId=6" width="300" height="200" frameborder="0"></iframe></center>
+  <center><iframe src="http://157.230.233.39:3000/d-solo/PToP41_Gk/all-solar-panel-data?orgId=2&refresh=10s&panelId=6" width="300" height="200" frameborder="0"></iframe></center>
   <br>
   <center>
-	<iframe src="http://157.230.233.39:3000/d-solo/PToP41_Gk/new-dashboarddd?orgId=2&refresh=10s&panelId=2" width="300" height="200" frameborder="0"></iframe></center>
+	<iframe src="http://157.230.233.39:3000/d-solo/PToP41_Gk/all-solar-panel-data?orgId=2&refresh=10s&panelId=2" width="300" height="200" frameborder="0"></iframe></center>
 </div>
 
 <script>
@@ -319,7 +337,7 @@ function closeNav2() {
 </body>
 
 ..js, function Photoresistor1(){
-	closeNav();
+	closeNav2();
 	Page_change('3');
 }
 
@@ -328,8 +346,305 @@ function closeNav2() {
 	Page_change('4');
 }
 
+..js, function PowerData1(){
+	closeNav2();
+	Page_change('5');
+}
+
+..js, function VoltageData1(){
+	closeNav2();
+	Page_change('6');
+}
+
 ..js, function Logout1(){
 	closeNav2();
+	Page_change('1');
+}
+
+..}
+
+
+
+..[page],5
+..{
+	..js_pc, if(booleaner==1){
+	Theme_Change("5","b");
+	}
+	else{
+		Theme_Change("5","c");
+
+	}
+
+	..header_button,barchange, ui-btn ui-btn-icon-notext ui-corner-all ui-icon-bars,
+		openNav3();
+	
+
+..html,
+<head>
+<meta name="viewport3" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}
+</style>
+</head>
+<body>
+
+<div id="mySidebar3" class="sidebar">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav3()">×</a>
+  <a href="#" onclick="Photoresistor3()">Lumen Data</a>
+  <a href="#" onclick="LumenData3()">Current Data</a>
+  <a href="#" onclick="LumenData3()">Power Data</a>
+  <a href="#" onclick="VoltageData3()">Voltage Data</a>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  <a href="#" onclick="Logout3()">Log Out</a>
+</div>
+
+<div id="main3"> 
+<center><h2>Admin Panel</h2></center>
+  <center><iframe src="http://157.230.233.39:3000/d-solo/PToP41_Gk/all-solar-panel-data?orgId=2&refresh=10s&panelId=10" width="300" height="200" frameborder="0"></iframe>
+  <br>
+  <center>
+	<iframe src="http://157.230.233.39:3000/d-solo/PToP41_Gk/all-solar-panel-data?orgId=2&refresh=10s&panelId=12" width="300" height="200" frameborder="0"></iframe></center>
+</div>
+
+<script>
+function openNav3() {
+  document.getElementById("mySidebar3").style.width = "250px";
+  document.getElementById("main3").style.marginLeft = "250px";
+}
+
+function closeNav3() {
+  document.getElementById("mySidebar3").style.width = "0";
+  document.getElementById("main3").style.marginLeft= "0";
+}
+</script>
+   
+</body>
+
+..js, function Photoresistor3(){
+	closeNav3();
+	Page_change('3');
+}
+
+..js, function LumenData3(){
+	closeNav3();
+	Page_change('4');
+}
+
+..js, function PowerData3(){
+	closeNav3();
+	Page_change('5');
+}
+
+..js, function VoltageData3(){
+	closeNav3();
+	Page_change('6');
+}
+
+..js, function Logout1(){
+	closeNav3();
+	Page_change('1');
+}
+
+..}
+
+
+..[page],6
+..{
+	..js_pc, if(booleaner==1){
+	Theme_Change("6","b");
+	}
+	else{
+		Theme_Change("6","c");
+
+	}
+
+	..header_button,barchange, ui-btn ui-btn-icon-notext ui-corner-all ui-icon-bars,
+		openNav4();
+	
+
+..html,
+<head>
+<meta name="viewport4" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}
+</style>
+</head>
+<body>
+
+<div id="mySidebar4" class="sidebar">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav4()">×</a>
+  <a href="#" onclick="Photoresistor4()">Lumen Data</a>
+  <a href="#" onclick="LumenData4()">Current Data</a>
+  <a href="#" onclick="LumenData4()">Power Data</a>
+  <a href="#" onclick="VoltageData4()">Voltage Data</a>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  <a href="#" onclick="Logout4()">Log Out</a>
+</div>
+
+<div id="main4"> 
+<center><h2>Admin Panel</h2></center>
+  <center><iframe src="http://157.230.233.39:3000/d-solo/PToP41_Gk/all-solar-panel-data?orgId=2&refresh=10s&panelId=14" width="300" height="200" frameborder="0"></iframe></center>
+  <br>
+  <center>
+	<iframe src="http://157.230.233.39:3000/d-solo/PToP41_Gk/all-solar-panel-data?orgId=2&refresh=10s&panelId=16" width="300" height="200" frameborder="0"></iframe></center>
+</div>
+
+<script>
+function openNav4() {
+  document.getElementById("mySidebar4").style.width = "250px";
+  document.getElementById("main4").style.marginLeft = "250px";
+}
+
+function closeNav4() {
+  document.getElementById("mySidebar4").style.width = "0";
+  document.getElementById("main4").style.marginLeft= "0";
+}
+</script>
+   
+</body>
+
+..js, function Photoresistor4(){
+	closeNav4();
+	Page_change('3');
+}
+
+..js, function LumenData4(){
+	closeNav4();
+	Page_change('4');
+}
+
+..js, function PowerData4(){
+	closeNav4();
+	Page_change('5');
+}
+
+..js, function VoltageData4(){
+	closeNav4();
+	Page_change('6');
+}
+
+..js, function Logout1(){
+	closeNav4();
 	Page_change('1');
 }
 
